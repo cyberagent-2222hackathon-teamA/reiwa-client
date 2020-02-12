@@ -1,0 +1,45 @@
+{
+  "name": "reiwa-client",
+  "version": "1.0.0",
+  "description": "client for cyberagent 2222hackathon teamA",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/cyberagent-2222hackathon-teamA/reiwa-client.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/cyberagent-2222hackathon-teamA/reiwa-client/issues"
+  },
+  "homepage": "https://github.com/cyberagent-2222hackathon-teamA/reiwa-client#readme",
+  "dependencies": {
+    "react": "^16.12.0",
+    "react-dom": "^16.12.0",
+    "react-router-dom": "^5.1.2"
+  },
+  "devDependencies": {
+    "@types/react-dom": "^16.9.5",
+    "@types/react-router": "^5.1.4",
+    "@types/react-router-dom": "^5.1.3",
+    "@types/styled-components": "^4.4.3",
+    "@whatasoda/eslint-config": "^1.3.3",
+    "copy-webpack-plugin": "^5.1.1",
+    "css-loader": "^3.4.2",
+    "file-loader": "^5.0.2",
+    "html-webpack-plugin": "^3.2.0",
+    "img-loader": "^3.0.1",
+    "style-loader": "^1.1.3",
+    "styled-components": "^5.0.1",
+    "ts-loader": "^6.2.1",
+    "typescript": "^3.7.5",
+    "typescript-eslint-parser": "^22.0.0",
+    "url-loader": "^3.0.0",
+    "webpack": "^4.41.6",
+    "webpack-cli": "^3.3.11",
+    "webpack-dev-server": "^3.10.3"
+  }
+}
