@@ -1,9 +1,13 @@
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
+const TerserPlugin = require('terser-webpack-plugin');
 
 const src = path.resolve(__dirname, 'src');
 const dist = path.resolve(__dirname, 'dist');
+
+const MODE = process.env.NODE_ENV || 'development';
+const DEV = process.env.NODE_ENV !== 'production';
 
 const copyRules = [
   {
@@ -11,18 +15,11 @@ const copyRules = [
     to: dist,
   },
 ];
+
 module.exports = {
+  mode: MODE,
   entry: src + '/index.tsx',
-  output: {
-    path: dist,
-    filename: 'js/[name].bundle.js',
-    chunkFilename: 'js/[name].bundle.js',
-    publicPath: '/',
-  },
   devtool: 'source-map',
-  resolve: {
-    extensions: ['.ts', '.tsx', '.js', '.json'],
-  },
   devServer: {
     open: true,
     openPage: '',
@@ -30,6 +27,22 @@ module.exports = {
     watchContentBase: true,
     port: 3000,
     historyApiFallback: true,
+  },
+  output: {
+    path: dist,
+    filename: 'js/[name].bundle.js',
+    chunkFilename: 'js/[name].bundle.js',
+    publicPath: '/',
+  },
+  resolve: {
+    extensions: ['.ts', '.tsx', '.js', '.json'],
+  },
+  optimization: {
+    minimize: !DEV,
+    minimizer: DEV ? [] : [new TerserPlugin()],
+    splitChunks: {
+      chunks: 'all',
+    },
   },
   module: {
     rules: [
@@ -53,9 +66,4 @@ module.exports = {
     }),
     new CopyWebpackPlugin(copyRules),
   ],
-  optimization: {
-    splitChunks: {
-      chunks: 'all',
-    },
-  },
 };
