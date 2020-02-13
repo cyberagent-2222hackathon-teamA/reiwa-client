@@ -1,11 +1,10 @@
 import React from 'react';
+import { Top } from '../containers/Top';
 
-const App: React.FC = () => {
+export const App: React.FC = () => {
   return (
     <>
-      <div>hoge</div>
+      <Top />
     </>
   );
 };
-
-export default App;
