@@ -17,11 +17,12 @@
       "es2018",
       "es2019",
       "dom",
+      "esnext",
     ],
     "module": "esnext",
     "jsx": "react",
     "allowSyntheticDefaultImports": true,
     "forceConsistentCasingInFileNames": true,
   },
-  "include": ["src"]
+  "include": ["src/**/*"]
 }
