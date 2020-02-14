@@ -1,21 +1,22 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { getUser } from '../lib/api/api';
+import { UserComp } from '../components/page/User';
 
 export const Top: React.FC = () => {
+  const [user, setUser] = useState();
   useEffect(() => {
     const hoge = async () => {
       const { res } = await getUser();
       // eslint-disable-next-line no-console
       console.log(res);
+      setUser(res);
     };
     hoge();
   }, []);
 
   return (
     <>
-      <div>
-        <p>Top container</p>
-      </div>
+      <UserComp user={user}></UserComp>
     </>
   );
 };
