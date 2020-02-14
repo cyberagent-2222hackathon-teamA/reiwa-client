@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { getUser } from '../lib/api/api';
-import { UserComp } from '../components/page/User';
+// import { UserComp } from '../components/page/User';
 
 const User: React.FC = () => {
   const [user, setUser] = useState();
@@ -12,12 +12,15 @@ const User: React.FC = () => {
       setUser(res);
     };
     hoge();
+    // eslint-disable-next-line no-console
+    console.log(user);
   }, []);
 
+  // <UserComp user={user}></UserComp>
   return (
-    <>
-      <UserComp user={user}></UserComp>
-    </>
+    <div>
+      <p>user container</p>
+    </div>
   );
 };
 
