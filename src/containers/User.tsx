@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { getUser } from '../lib/api/api';
 import { UserComp } from '../components/page/User';
 
-export const Top: React.FC = () => {
+const User: React.FC = () => {
   const [user, setUser] = useState();
   useEffect(() => {
     const hoge = async () => {
@@ -20,3 +20,5 @@ export const Top: React.FC = () => {
     </>
   );
 };
+
+export default User;
