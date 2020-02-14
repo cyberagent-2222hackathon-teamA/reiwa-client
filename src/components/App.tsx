@@ -1,10 +1,16 @@
 import React from 'react';
-import { Top } from '../containers/Top';
+import { Router } from 'react-router';
+import { history } from '../lib/plugins/history';
+import { Routes } from '../lib/routes';
+import { TopNavi } from './template/TopNavi';
 
 export const App: React.FC = () => {
   return (
     <>
-      <Top />
+      <Router history={history}>
+        <TopNavi />
+        <Routes />
+      </Router>
     </>
   );
 };
