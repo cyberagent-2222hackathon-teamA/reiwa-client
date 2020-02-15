@@ -6,7 +6,7 @@ const Top: React.FC = () => {
   const [user, setUser] = useState<User | null>(null);
   const [err, setErr] = useState<Error | null>(null);
   useEffect(() => {
-    const hoge = async () => {
+    const getUsers = async () => {
       const { res, error } = await getUser();
       // eslint-disable-next-line no-console
       console.log(res);
@@ -17,7 +17,7 @@ const Top: React.FC = () => {
         setErr(error);
       }
     };
-    hoge();
+    getUsers();
     // eslint-disable-next-line no-console
     console.log({ user, err });
   }, []);
