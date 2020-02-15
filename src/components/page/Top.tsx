@@ -11,8 +11,7 @@ const TopComp: React.FC<Props> = ({ res }) => {
   return (
     <>
       <div>
-        <p>{res.name}</p>
-        <Link to={`/${res.id}`}>{res.name}</Link>
+        <Link to={`/user/${res.id}`}>{res.name}</Link>
         <p>{res.channel_id}</p>
       </div>
     </>
