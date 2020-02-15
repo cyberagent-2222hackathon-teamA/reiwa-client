@@ -1,27 +1,28 @@
 import React, { useEffect, useState } from 'react';
 import { getUser } from '../lib/api/api';
-// import { UserComp } from '../components/page/User';
+import { UserComp } from '../components/page/User';
 
-const User: React.FC = () => {
-  const [user, setUser] = useState();
+const Top: React.FC = () => {
+  const [user, setUser] = useState<User | null>(null);
+  const [err, setErr] = useState<Error | null>(null);
   useEffect(() => {
-    const hoge = async () => {
-      const { res } = await getUser();
+    const getUserData = async () => {
+      const { res, error } = await getUser();
       // eslint-disable-next-line no-console
       console.log(res);
-      setUser(res);
+      if (res) {
+        setUser(res);
+      }
+      if (error) {
+        setErr(error);
+      }
     };
-    hoge();
+    getUserData();
     // eslint-disable-next-line no-console
-    console.log(user);
+    console.log({ user, err });
   }, []);
 
-  // <UserComp user={user}></UserComp>
-  return (
-    <div>
-      <p>user container</p>
-    </div>
-  );
+  return <>{user && <UserComp user={user} />}</>;
 };
 
-export default User;
+export default Top;
