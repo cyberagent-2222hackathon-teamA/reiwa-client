@@ -12,7 +12,7 @@ const TopComp: React.FC<Props> = ({ res }) => {
     <>
       <div>
         <p>{res.name}</p>
-        <Link to={`/${res.id}`}>{res.id}</Link>
+        <Link to={`/${res.id}`}>{res.name}</Link>
         <p>{res.channel_id}</p>
       </div>
     </>
