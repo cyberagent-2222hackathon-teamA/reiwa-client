@@ -1,28 +1,42 @@
-import React, { createContext, useContext, FC, useMemo } from 'react';
-import { useRouteMatch } from 'react-router';
+import React, { createContext, useContext, FC, useMemo, useState, useEffect } from 'react';
+import { getToken } from '../api/auth';
 
-interface UserState {}
+interface UserState {
+  token: string | null;
+  signOut: () => void;
+}
 
 export const useUserContext = () => useContext(useUserContext.context);
-useUserContext.context = createContext<UserState>({ cookie: null });
+useUserContext.context = createContext<UserState>({ token: null, signOut: () => {} });
 
 export const UserProvider: FC = ({ children }) => {
-  const matchLogin = useRouteMatch({
-    path: '/login',
-    strict: true,
-    sensitive: true,
-    exact: true,
-  });
+  const [token, setToken] = useState<string | null>(null);
 
-  const oauthToken = useMemo(() => {
+  const signOut = () => {
+    setToken(null);
+    document.cookie = `user=;max-age=0`;
+  };
+
+  const locationSearch = useMemo(() => {
     return location.search;
-  }, [matchLogin]);
+  }, [location.search]);
+
+  useEffect(() => {
+    if (locationSearch) {
+      const setTokenFunc = async () => {
+        const { res } = await getToken(locationSearch);
+        if (res) {
+          setToken(res.token);
+          document.cookie = `user=${res.token}`;
+        }
+      };
+      setTokenFunc();
+    }
+  }, [locationSearch]);
 
   const value = useMemo<UserState>(() => {
-    // eslint-disable-next-line no-console
-    console.log(oauthToken);
-    return { oauthToken };
-  }, [oauthToken]);
+    return { token, signOut };
+  }, [token]);
 
   return <useUserContext.context.Provider value={value} children={children} />;
 };
