@@ -6,8 +6,6 @@ interface Props {
 }
 
 const TopComp: React.FC<Props> = ({ res }) => {
-  // eslint-disable-next-line no-console
-  console.log({ res });
   return (
     <>
       <div>

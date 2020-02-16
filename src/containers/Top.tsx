@@ -5,6 +5,7 @@ import TopComp from '../components/page/Top';
 const Top: React.FC = () => {
   const [user, setUser] = useState<User | null>(null);
   const [err, setErr] = useState<Error | null>(null);
+
   useEffect(() => {
     const getUsers = async () => {
       const { res, error } = await getUser();
@@ -16,11 +17,14 @@ const Top: React.FC = () => {
       }
     };
     getUsers();
-    // eslint-disable-next-line no-console
-    console.log({ user, err });
   }, []);
 
-  return <>{user && <TopComp res={user} />}</>;
+  return (
+    <>
+      {user && <TopComp res={user} />}
+      {err && <p>err</p>}
+    </>
+  );
 };
 
 export default Top;
