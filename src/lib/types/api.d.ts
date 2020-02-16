@@ -7,3 +7,7 @@ declare interface User {
     date: string;
   };
 }
+
+declare interface URL {
+  url: string;
+}
