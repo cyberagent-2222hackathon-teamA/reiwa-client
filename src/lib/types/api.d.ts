@@ -11,3 +11,7 @@ declare interface User {
 declare interface URL {
   url: string;
 }
+
+declare interface Token {
+  token: string;
+}
