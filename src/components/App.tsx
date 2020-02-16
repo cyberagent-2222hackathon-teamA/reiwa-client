@@ -10,9 +10,9 @@ export const App: React.FC = () => {
   return (
     <>
       <Router history={history}>
-        <TopNavi />
-        <MenuNavi />
         <UserProvider>
+          <TopNavi />
+          <MenuNavi />
           <Routes />
         </UserProvider>
       </Router>
