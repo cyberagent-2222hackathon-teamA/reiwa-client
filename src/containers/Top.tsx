@@ -8,8 +8,6 @@ const Top: React.FC = () => {
   useEffect(() => {
     const getUsers = async () => {
       const { res, error } = await getUser();
-      // eslint-disable-next-line no-console
-      console.log(res);
       if (res) {
         setUser(res);
       }

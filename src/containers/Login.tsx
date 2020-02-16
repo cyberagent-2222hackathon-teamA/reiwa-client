@@ -5,7 +5,7 @@ const Login: React.FC = () => {
   const { user } = useUserContext();
   // eslint-disable-next-line no-console
   console.log(user);
-  return <div></div>;
+  return <div>{user && <p>user</p>}</div>;
 };
 
 export default Login;
