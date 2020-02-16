@@ -6,9 +6,7 @@ export const MenuNavi: React.FC = () => {
   const getURL = async () => {
     const { res } = await getTwitterURL();
     if (res) {
-      const windowLogin = window.open(`${res.url}`);
-      // eslint-disable-next-line no-console
-      console.log({ windowLogin });
+      window.location.assign(`${res.url}`);
     }
   };
 
