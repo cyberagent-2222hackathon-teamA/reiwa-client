@@ -1,30 +1,28 @@
-import React, { useEffect, createContext, useContext, FC, useState, useMemo } from 'react';
+import React, { createContext, useContext, FC, useMemo } from 'react';
+import { useRouteMatch } from 'react-router';
 
-interface UserState {
-  user: boolean | null;
-  signOut: () => void;
-}
+interface UserState {}
 
 export const useUserContext = () => useContext(useUserContext.context);
-useUserContext.context = createContext<UserState>({ user: null, signOut: () => {} });
+useUserContext.context = createContext<UserState>({ cookie: null });
 
 export const UserProvider: FC = ({ children }) => {
-  const [user, setUser] = useState<boolean | null>(null);
-  const signOut = () => {
-    setUser(null);
-  };
+  const matchLogin = useRouteMatch({
+    path: '/login',
+    strict: true,
+    sensitive: true,
+    exact: true,
+  });
 
-  useEffect(() => {
-    if (!user) {
-      setUser(true);
-    }
-  }, []);
+  const oauthToken = useMemo(() => {
+    return location.search;
+  }, [matchLogin]);
 
   const value = useMemo<UserState>(() => {
     // eslint-disable-next-line no-console
-    console.log({ user });
-    return { user, signOut };
-  }, [user]);
+    console.log(oauthToken);
+    return { oauthToken };
+  }, [oauthToken]);
 
   return <useUserContext.context.Provider value={value} children={children} />;
 };
