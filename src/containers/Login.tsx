@@ -17,7 +17,7 @@ const Login: React.FC = () => {
   }, [cookies['user']]);
 
   useEffect(() => {
-    // cookieにuserがある場合rootへリダイレクト
+    // URLを直接叩かれた場合queryの変更はリダイレクト
     if (cookies['user']) {
       history.push('/');
     }
