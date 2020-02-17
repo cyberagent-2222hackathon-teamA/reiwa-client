@@ -1,4 +1,4 @@
-import React, { useMemo, useEffect } from 'react';
+import React, { useMemo, useEffect, useCallback } from 'react';
 import { useCookies } from 'react-cookie';
 import { getToken } from '../lib/api/auth';
 import { history } from '../lib/plugins/history';
@@ -9,17 +9,18 @@ const Login: React.FC = () => {
     return location.search;
   }, [location.search]);
 
+  const setToken = useCallback(async () => {
+    const { res } = await getToken(query);
+    if (res) {
+      setCookie('user', res.token, { path: '/' });
+    }
+  }, [cookies['user']]);
+
   useEffect(() => {
     // cookieにuserがある場合rootへリダイレクト
     if (cookies['user']) {
       history.push('/');
     }
-    const setToken = async () => {
-      const { res } = await getToken(query);
-      if (res) {
-        setCookie('user', res.token, { path: '/' });
-      }
-    };
     setToken();
   }, [query]);
 
@@ -28,11 +29,11 @@ const Login: React.FC = () => {
     if (cookies['user']) {
       history.push('/');
     }
-  }, [cookies]);
+  }, [cookies['user']]);
 
   return (
     <div>
-      <p>hogehgoe</p>
+      <p>login</p>
     </div>
   );
 };
