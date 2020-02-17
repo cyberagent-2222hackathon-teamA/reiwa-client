@@ -9,7 +9,7 @@ interface Props {
   }>;
 }
 
-const Top: React.FC<Props> = ({ match }) => {
+const User: React.FC<Props> = ({ match }) => {
   const [user, setUser] = useState<User | null>(null);
   const userId = useMemo(() => {
     return match.params.userId;
@@ -26,9 +26,9 @@ const Top: React.FC<Props> = ({ match }) => {
   const getUserData = useCallback(async () => {
     const { res } = await getUser(userNumber);
     if (res) setUser(res);
-  }, [location]);
+  }, [location.pathname]);
 
   return <>{user && <UserComp user={user} />}</>;
 };
 
-export default Top;
+export default User;
