@@ -1,4 +1,4 @@
-const apiBase = 'https://virtserver.swaggerhub.com/nakao107107/reiwa-api/1.0.0';
+const apiBase = 'https://api.reiwa.cactus.click/v1/users';
 
 async function _fetch<T>(path: string): Promise<{ res: T | null; error: Error | null }> {
   try {
@@ -13,7 +13,7 @@ async function _fetch<T>(path: string): Promise<{ res: T | null; error: Error | 
   }
 }
 
-export const getUser = async () => {
-  const users = `${apiBase}/user`;
-  return _fetch<User>(users);
+export const getUser = async (userNubmer: number) => {
+  const user = `${apiBase}/${userNubmer}`;
+  return _fetch<User>(user);
 };
