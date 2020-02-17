@@ -1,26 +1,32 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useCallback, useMemo } from 'react';
 import { getUser } from '../lib/api/api';
 import { UserComp } from '../components/page/User';
+import { match } from 'react-router';
 
-const Top: React.FC = () => {
+interface Props {
+  match: match<{
+    userId: string;
+  }>;
+}
+
+const Top: React.FC<Props> = ({ match }) => {
   const [user, setUser] = useState<User | null>(null);
-  const [err, setErr] = useState<Error | null>(null);
+  const userId = useMemo(() => {
+    return match.params.userId;
+  }, [match.params.userId]);
+
+  const userNumber = useMemo(() => {
+    return parseInt(userId, 10);
+  }, [userId]);
+
   useEffect(() => {
-    const getUserData = async () => {
-      const { res, error } = await getUser();
-      // eslint-disable-next-line no-console
-      console.log(res);
-      if (res) {
-        setUser(res);
-      }
-      if (error) {
-        setErr(error);
-      }
-    };
     getUserData();
-    // eslint-disable-next-line no-console
-    console.log({ user, err });
-  }, []);
+  }, [userId]);
+
+  const getUserData = useCallback(async () => {
+    const { res } = await getUser(userNumber);
+    if (res) setUser(res);
+  }, [location]);
 
   return <>{user && <UserComp user={user} />}</>;
 };

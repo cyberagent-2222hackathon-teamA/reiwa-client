@@ -9,7 +9,7 @@ export const UserComp: React.FC<Props> = ({ user }) => {
     <>
       <div>
         <p>{user.name}</p>
-        <p>{user.contributes.count}</p>
+        <p>{user.id}</p>
       </div>
     </>
   );
