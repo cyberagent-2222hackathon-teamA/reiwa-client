@@ -10,9 +10,9 @@ const Login: React.FC = () => {
   }, [location.search]);
 
   const setToken = useCallback(async () => {
-    const { res } = await getToken(query);
-    if (res) {
-      setCookie('user', res.token, { path: '/' });
+    const { json } = await getToken(query);
+    if (json) {
+      setCookie('user', json.token, { path: '/' });
     }
   }, [cookies['user']]);
 

@@ -7,9 +7,9 @@ export const MenuNavi: React.FC = () => {
   const [cookies, removeCookie] = useCookies(['user']);
 
   const logIn = useCallback(async () => {
-    const { res } = await getTwitterURL();
-    if (res) {
-      window.location.assign(`${res.url}`);
+    const { json } = await getTwitterURL();
+    if (json) {
+      window.location.assign(`${json.url}`);
     }
   }, [cookies['user']]);
 
