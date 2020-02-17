@@ -1,8 +1,8 @@
-const apiBase = 'https://api.reiwa.cactus.click/v1/users';
+const apiBase = 'https://api.reiwa.cactus.click/v1';
 
-async function _fetch<T>(path: string): Promise<{ res: T | null; error: Error | null }> {
+async function _fetch<T>(URL: string): Promise<{ res: T | null; error: Error | null }> {
   try {
-    const res = await fetch(path);
+    const res = await fetch(URL);
     const json = await res.json();
     if (!res.ok) {
       return { error: json, res: null };
@@ -13,7 +13,12 @@ async function _fetch<T>(path: string): Promise<{ res: T | null; error: Error | 
   }
 }
 
+export const getTimeLine = async () => {
+  const url = `${apiBase}/timeline/public`;
+  return _fetch<TimeLine>(url);
+};
+
 export const getUser = async (userNubmer: number) => {
-  const user = `${apiBase}/${userNubmer}`;
-  return _fetch<User>(user);
+  const url = `${apiBase}/users/${userNubmer}`;
+  return _fetch<User>(url);
 };

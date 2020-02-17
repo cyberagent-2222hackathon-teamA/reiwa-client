@@ -1,8 +1,8 @@
 const apiBase = 'https://api.reiwa.cactus.click/v1/twitter';
 
-async function _fetch<T>(path: string): Promise<{ res: Response | null; json: T | null; error: Error | null }> {
+async function _fetch<T>(URL: string): Promise<{ res: Response | null; json: T | null; error: Error | null }> {
   try {
-    const res = await fetch(path);
+    const res = await fetch(URL);
     const json = await res.json();
     return { error: null, res, json };
   } catch (error) {
