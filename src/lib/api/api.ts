@@ -13,8 +13,9 @@ async function _fetch<T>(URL: string): Promise<{ res: T | null; error: Error | n
   }
 }
 
-export const getTimeLine = async () => {
-  const url = `${apiBase}/timeline/public`;
+export const getTimeLine = async (page: number) => {
+  const limit = 10;
+  const url = `${apiBase}/timeline/public?limit=${limit}&page=${page}`;
   return _fetch<TimeLine>(url);
 };
 
