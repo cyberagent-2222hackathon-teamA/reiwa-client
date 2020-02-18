@@ -15,18 +15,14 @@ const User: React.FC<Props> = ({ match }) => {
     return match.params.userId;
   }, [match.params.userId]);
 
-  const userNumber = useMemo(() => {
-    return parseInt(userId, 10);
-  }, [userId]);
-
   useEffect(() => {
     getUserData();
   }, [userId]);
 
   const getUserData = useCallback(async () => {
-    const { res } = await getUser(userNumber);
+    const { res } = await getUser(userId);
     if (res) setUser(res);
-  }, [location.pathname]);
+  }, [userId]);
 
   return <>{user && <UserComp user={user} />}</>;
 };

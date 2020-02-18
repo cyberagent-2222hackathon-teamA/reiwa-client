@@ -19,7 +19,7 @@ export const getTimeLine = async (page: number) => {
   return _fetch<TimeLine>(url);
 };
 
-export const getUser = async (userNubmer: number) => {
+export const getUser = async (userNubmer: string) => {
   const url = `${apiBase}/users/${userNubmer}`;
   return _fetch<User>(url);
 };

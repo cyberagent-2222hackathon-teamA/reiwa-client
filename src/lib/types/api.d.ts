@@ -19,6 +19,7 @@ declare interface TimeLine {
 }
 
 interface UserContributes {
+  id: number;
   post_count: number;
   reaction_count: number;
   date: string;
