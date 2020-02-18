@@ -1,13 +1,13 @@
-interface twitterUser {
+declare interface TwitterUser {
   name: string;
   profile_image_url: string;
 }
 
-interface TimeLineContributes {
+declare interface TimeLineContributes {
   date: string;
   post_count: number;
   reaction_count: number;
-  user: twitterUser[];
+  user: TwitterUser;
 }
 
 declare interface TimeLine {
