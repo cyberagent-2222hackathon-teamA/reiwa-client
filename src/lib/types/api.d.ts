@@ -4,6 +4,7 @@ declare interface TwitterUser {
 }
 
 declare interface TimeLineContributes {
+  id: number;
   date: string;
   post_count: number;
   reaction_count: number;
