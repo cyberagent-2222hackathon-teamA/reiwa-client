@@ -1,19 +1,27 @@
-import React from 'react';
+import React, { useMemo } from 'react';
 import { Link } from 'react-router-dom';
+import { Pager } from '../Navigation/index';
 
 interface Props {
   timeLine: TimeLine;
 }
 
 export const TopComp: React.FC<Props> = ({ timeLine }) => {
+  const pager = useMemo(() => {
+    if (timeLine) {
+      const pages = Array.from(new Array(timeLine.total_page)).map((_, i) => ++i);
+      return pages;
+    }
+  }, [timeLine]);
+
   return (
     <div>
+      {pager && <Pager pager={pager} />}
       {timeLine.contributes.map((contributes: TimeLineContributes) => {
         return (
-          <React.Fragment key={contributes.date + contributes.reaction_count + contributes.post_count}>
+          <React.Fragment key={contributes.id}>
             <div>
               <div>
-                {/* <a href={`https://twitter.com/${contributes.user.name}`}></a> */}
                 <img src={contributes.user.profile_image_url} alt={contributes.user.name} />
               </div>
               <div>

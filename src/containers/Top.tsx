@@ -18,25 +18,12 @@ const Top: React.FC = () => {
 
   useEffect(() => {
     getTimeLineData();
-  }, []);
-
-  const totalPage = useMemo(() => {
-    if (timeLine) {
-      return [
-        Array(timeLine.total_page).map((pager: number) => {
-          return pager;
-        }),
-      ];
-    }
-  }, [timeLine]);
-
-  // eslint-disable-next-line no-console
-  console.log(totalPage, pageNumber);
+  }, [pageNumber.curr]);
 
   const getTimeLineData = useCallback(async () => {
     const { res } = await getTimeLine(pageNumber.curr);
     if (res) setTimeLine(res);
-  }, []);
+  }, [pageNumber]);
 
   return (
     <>
