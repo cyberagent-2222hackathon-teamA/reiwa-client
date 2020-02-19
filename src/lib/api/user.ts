@@ -7,5 +7,5 @@ export const getUser = async (userId: string) => {
 
 export const getContributes = async (userId: string) => {
   const url = `${apiBase}/users/${userId}/contributes`;
-  return _fetch<Reactions>(url);
+  return _fetch<Reactions[]>(url);
 };
