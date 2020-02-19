@@ -39,3 +39,14 @@ declare interface URL {
 declare interface Token {
   token: string;
 }
+
+declare interface Stamp {
+  name: string;
+  count: number;
+}
+
+declare interface Reactions {
+  id: number;
+  message: string;
+  reactions: Stamp[];
+}
