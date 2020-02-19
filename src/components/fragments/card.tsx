@@ -19,7 +19,7 @@ export const Card: React.FC<Props> = ({ timeLine }) => {
     <CardContents>
       <Icon src={timeLine.user.profile_image_url} alt={timeLine.user.name} />
       <div>
-        <Link to={href}>@{user.name}</Link>
+        <Link to={href}>{user.name}</Link>
         <p>
           <span>{timeLine.date}</span>
           <span>投稿数: {timeLine.post_count}</span>
