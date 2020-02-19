@@ -4,7 +4,7 @@ import styled from 'styled-components';
 
 const Container = styled.div`
   width: 100%;
-  padding: 10px;
+  padding: 10px 20px;
   background-color: #24292e;
   z-index: 1;
   h1 {

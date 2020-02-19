@@ -11,7 +11,7 @@ interface Props {
 const CardList = styled.div`
   display: flex;
   a {
-    color: white;
+    color: black;
     p {
       margin: 0;
     }
