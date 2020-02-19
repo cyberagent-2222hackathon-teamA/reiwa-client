@@ -1,12 +1,13 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
+import React, { useCallback } from 'react';
+import { history } from '../../lib/plugins/history';
 
 export const TopNavi: React.FC = () => {
+  const handleClickTitle = useCallback(() => {
+    history.push('/');
+  }, []);
   return (
     <div>
-      <h1>
-        <Link to={'/'}>0+</Link>
-      </h1>
+      <h1 onClick={handleClickTitle}>0+</h1>
     </div>
   );
 };
