@@ -5,7 +5,6 @@ import { history } from '../lib/plugins/history';
 import styled from 'styled-components';
 
 const TwitterButton = styled.a`
-  font-family: 'Helvetica Neue', Arial, sans-serif;
   position: relative;
   height: 20px;
   box-sizing: border-box;

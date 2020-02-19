@@ -12,12 +12,13 @@ export const Activities: React.FC<Props> = ({ activities }) => {
         console.log(activity);
         return (
           <div key={activity.id}>
-            <p>メッセージ：{activity.message}</p>
+            <p>メッセージ</p>
+            <p>{activity.message}</p>
             {activity.reactions.map((reaction) => {
               return (
                 <div key={reaction.name}>
-                  <span>スタンプ{reaction.name}</span>
-                  <span>count：{reaction.count}</span>
+                  <p>スタンプ{reaction.name}</p>
+                  <p>count{reaction.count}</p>
                 </div>
               );
             })}

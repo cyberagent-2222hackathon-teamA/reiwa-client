@@ -1,10 +1,18 @@
 import React, { useMemo } from 'react';
 import { Pager } from '../../navigation/pager';
-import { TimelineCard } from './internal/TimelineCard';
+import { TimeLineCard } from './internal/TimelineCard';
+import styled from 'styled-components';
 
 interface Props {
   timeLine: TimeLine;
 }
+
+const Container = styled.div`
+  height: 100vh;
+  display: flex;
+  flex-flow: column;
+  justify-content: space-around;
+`;
 
 export const TopComp: React.FC<Props> = ({ timeLine }) => {
   const pager = useMemo(() => {
@@ -17,9 +25,11 @@ export const TopComp: React.FC<Props> = ({ timeLine }) => {
   return (
     <div>
       {pager && <Pager pager={pager} />}
-      {timeLine.contributes.map((contributes: TimeLineContributes) => {
-        return <TimelineCard key={contributes.id} contributes={contributes}></TimelineCard>;
-      })}
+      <Container>
+        {timeLine.contributes.map((contributes: TimeLineContributes) => {
+          return <TimeLineCard key={contributes.id} contributes={contributes}></TimeLineCard>;
+        })}
+      </Container>
     </div>
   );
 };
