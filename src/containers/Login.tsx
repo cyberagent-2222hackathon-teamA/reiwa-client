@@ -39,18 +39,18 @@ const Login: React.FC = () => {
   }, []);
 
   const setToken = useCallback(async () => {
-    const { json } = await getToken(query);
-    if (json) {
-      setCookie('user', json.token, { path: '/' });
+    const { res } = await getToken(query);
+    if (res) {
+      setCookie('user', res.token, { path: '/' });
     }
     // cookieにuserを入れてrootへリダイレクト
     history.push('/');
   }, [cookies['user']]);
 
   const logIn = useCallback(async () => {
-    const { json } = await getTwitterURL();
-    if (json) {
-      window.location.assign(`${json.url}`);
+    const { res } = await getTwitterURL();
+    if (res) {
+      window.location.assign(`${res.url}`);
     }
   }, [cookies['user']]);
 
