@@ -1,19 +1,19 @@
 import React from 'react';
 
 interface Props {
-  activity: Reactions[];
+  activities: Reactions[];
 }
 
-export const Reactions: React.FC<Props> = ({ activity }) => {
+export const Activities: React.FC<Props> = ({ activities }) => {
   return (
     <div>
-      {activity.map((reaction) => {
+      {activities.map((activity) => {
         // eslint-disable-next-line no-console
-        console.log(reaction);
+        console.log(activity);
         return (
-          <div key={reaction.id}>
-            <p>メッセージ：{reaction.message}</p>
-            {reaction.reactions.map((reaction) => {
+          <div key={activity.id}>
+            <p>メッセージ：{activity.message}</p>
+            {activity.reactions.map((reaction) => {
               return (
                 <div key={reaction.name}>
                   <span>スタンプ{reaction.name}</span>

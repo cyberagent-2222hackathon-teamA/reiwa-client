@@ -2,7 +2,7 @@ import React, { useEffect, useState, useCallback, useMemo } from 'react';
 import { match } from 'react-router';
 import { getUser, getContributes } from '../lib/api/user';
 import { UserComp } from '../components/pages/User';
-import { Reactions } from '../components/pages/User/Reactions';
+import { Activities } from '../components/pages/User/Activities';
 // import { UserError } from '../components/boundaries/user/error';
 
 interface Props {
@@ -13,7 +13,7 @@ interface Props {
 
 const User: React.FC<Props> = ({ match }) => {
   const [user, setUser] = useState<User | null>(null);
-  const [reactions, setReactions] = useState<Reactions[] | null>(null);
+  const [activities, setActivities] = useState<Reactions[] | null>(null);
   // const [errorMessage, setErrorMessage] = useState<string | null>(null);
 
   const userId = useMemo(() => {
@@ -35,14 +35,14 @@ const User: React.FC<Props> = ({ match }) => {
 
   const getContributesData = useCallback(async () => {
     const { res } = await getContributes(userId);
-    if (res) setReactions(res);
+    if (res) setActivities(res);
   }, [userId]);
 
   return (
     <>
       {/* {error && <UserError error={error} />} */}
       {user && <UserComp user={user} />}
-      {reactions && <Reactions activity={reactions} />}
+      {activities && <Activities activities={activities} />}
       {/* {errorMessage && <p>{errorMessage}</p>} */}
     </>
   );
