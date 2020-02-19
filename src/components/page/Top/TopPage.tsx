@@ -1,6 +1,6 @@
 import React, { useMemo } from 'react';
-import { Pager } from '../navigation/pager';
-import { Card } from '../fragments/card';
+import { Pager } from '../../navigation/pager';
+import { TimelineCard } from './internal/TimelineCard';
 
 interface Props {
   timeLine: TimeLine;
@@ -18,7 +18,7 @@ export const TopComp: React.FC<Props> = ({ timeLine }) => {
     <div>
       {pager && <Pager pager={pager} />}
       {timeLine.contributes.map((contributes: TimeLineContributes) => {
-        return <Card key={contributes.id} timeLine={contributes}></Card>;
+        return <TimelineCard key={contributes.id} contributes={contributes}></TimelineCard>;
       })}
     </div>
   );

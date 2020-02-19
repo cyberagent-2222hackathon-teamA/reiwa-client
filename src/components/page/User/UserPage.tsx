@@ -1,7 +1,7 @@
 import React from 'react';
 import CalendarHeatmap from 'react-calendar-heatmap';
 import styled from 'styled-components';
-import { Icon } from '../fragments/icon';
+import { Icon } from '../../fragments/icon';
 import 'react-calendar-heatmap/dist/styles.css';
 import './reactCalendarHeatmap.css';
 
@@ -22,7 +22,7 @@ export const UserComp: React.FC<Props> = ({ user }) => {
       <div>
         <p>{user.name}</p>
       </div>
-      <Icon src={user.twitter_profile_image} alt={user.name} />
+      <Icon src={user.profile_image_url} alt={user.name} />
       <Contribute>
         <CalendarHeatmap
           startDate={start}
