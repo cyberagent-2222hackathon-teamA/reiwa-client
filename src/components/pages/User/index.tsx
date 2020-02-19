@@ -20,9 +20,11 @@ export const UserComp: React.FC<Props> = ({ user }) => {
   return (
     <>
       <div>
-        <p>{user.name}</p>
+        <a href={`https://twitter.com/${user.name}`}>
+          <p>{user.name}</p>
+          <Icon src={user.profile_image_url} alt={user.name} />
+        </a>
       </div>
-      <Icon src={user.profile_image_url} alt={user.name} />
       <Contribute>
         <CalendarHeatmap
           startDate={start}
