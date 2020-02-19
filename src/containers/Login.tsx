@@ -2,6 +2,20 @@ import React, { useCallback, useMemo, useEffect } from 'react';
 import { useCookies } from 'react-cookie';
 import { getTwitterURL, getToken } from '../lib/api/auth';
 import { history } from '../lib/plugins/history';
+import styled from 'styled-components';
+
+const TwitterButton = styled.a`
+  font-family: 'Helvetica Neue', Arial, sans-serif;
+  position: relative;
+  height: 20px;
+  box-sizing: border-box;
+  padding: 10px;
+  background-color: #1b95e0;
+  color: #fff;
+  border-radius: 3px;
+  font-weight: 500;
+  cursor: pointer;
+`;
 
 const Login: React.FC = () => {
   const [cookies, setCookie] = useCookies(['user']);
@@ -42,7 +56,7 @@ const Login: React.FC = () => {
 
   return (
     <div>
-      <button onClick={logIn}>Twitter Log In</button>
+      <TwitterButton onClick={logIn}>Twitter</TwitterButton>
     </div>
   );
 };
