@@ -1,6 +1,6 @@
 import React, { useEffect, useState, useCallback, useMemo } from 'react';
 import { useRouteMatch } from 'react-router';
-import { getTimeLine } from '../lib/api/api';
+import { getTimeLine } from '../lib/api/timeline';
 import { TopComp } from '../components/pages/Top';
 
 const Top: React.FC = () => {

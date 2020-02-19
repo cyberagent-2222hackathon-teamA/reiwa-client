@@ -1,6 +1,6 @@
 import React, { useEffect, useState, useCallback, useMemo } from 'react';
 import { match } from 'react-router';
-import { getUser } from '../lib/api/api';
+import { getUser } from '../lib/api/user';
 import { UserComp } from '../components/pages/User';
 
 interface Props {
