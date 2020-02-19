@@ -1,7 +1,7 @@
 import React, { useEffect, useState, useCallback, useMemo } from 'react';
 import { match } from 'react-router';
 import { getUser } from '../lib/api/api';
-import { UserComp } from '../components/page/User/UserPage';
+import { UserComp } from '../components/pages/User';
 
 interface Props {
   match: match<{

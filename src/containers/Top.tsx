@@ -1,7 +1,7 @@
 import React, { useEffect, useState, useCallback, useMemo } from 'react';
 import { useRouteMatch } from 'react-router';
 import { getTimeLine } from '../lib/api/api';
-import { TopComp } from '../components/page/Top/TopPage';
+import { TopComp } from '../components/pages/Top';
 
 const Top: React.FC = () => {
   const [timeLine, setTimeLine] = useState<TimeLine | null>(null);
