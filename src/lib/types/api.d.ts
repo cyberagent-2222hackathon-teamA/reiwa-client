@@ -28,7 +28,7 @@ interface UserContributes {
 declare interface User {
   id: number;
   name: string;
-  twitter_profile_image: string;
+  profile_image_url: string;
   contributes: UserContributes[];
 }
 
