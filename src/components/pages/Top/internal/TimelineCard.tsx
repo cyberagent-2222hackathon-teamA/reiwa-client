@@ -10,12 +10,18 @@ interface Props {
 
 const CardList = styled.div`
   display: flex;
+  justify-content: center;
+  padding: 16px 0;
   a {
     color: black;
     p {
       margin: 0;
     }
   }
+`;
+
+const TextContainer = styled.div`
+  padding-left: 16px;
 `;
 
 export const TimeLineCard: React.FC<Props> = ({ contributes }) => {
@@ -27,12 +33,12 @@ export const TimeLineCard: React.FC<Props> = ({ contributes }) => {
       <div>
         <Icon src={user.profile_image_url} alt={user.name} />
       </div>
-      <div>
+      <TextContainer>
         <Link to={href}>
           <p>{user.name}</p>
         </Link>
         <Card date={date} postCount={post_count} reactionCount={reaction_count}></Card>
-      </div>
+      </TextContainer>
     </CardList>
   );
 };
