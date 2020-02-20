@@ -35,7 +35,7 @@ export const TimeLineCard: React.FC<Props> = ({ contributes }) => {
       </Link>
       <TextContainer>
         <Link to={href}>
-          <p>{user.name}</p>
+          <span>{user.name}</span>
         </Link>
         <Card date={date} postCount={post_count} reactionCount={reaction_count}></Card>
       </TextContainer>
