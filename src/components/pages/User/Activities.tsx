@@ -8,8 +8,8 @@ export const Activities: React.FC<Props> = ({ activities }) => {
   return (
     <div>
       {activities.map((activity) => {
-        // eslint-disable-next-line no-console
-        console.log(activity);
+        // // eslint-disable-next-line no-console
+        // console.log(activity);
         return (
           <div key={activity.id}>
             <p>メッセージ</p>

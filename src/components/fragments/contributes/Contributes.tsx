@@ -15,8 +15,6 @@ const Contribute = styled.div`
 export const Contributes: React.FC<Props> = ({ user }) => {
   const start = user.contributes[0].date;
   const end = user.contributes[user.contributes.length - 1].date;
-  // eslint-disable-next-line no-console
-  console.log({ start, end });
 
   return (
     <>
@@ -31,6 +29,9 @@ export const Contributes: React.FC<Props> = ({ user }) => {
               </React.Fragment>
             );
           })}
+          classForValue={() => {
+            return `color-scale-${user.contributes[1].post_count}`;
+          }}
         />
       </Contribute>
     </>
