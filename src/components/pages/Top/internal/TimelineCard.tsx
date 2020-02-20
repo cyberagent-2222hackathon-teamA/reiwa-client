@@ -30,9 +30,9 @@ export const TimeLineCard: React.FC<Props> = ({ contributes }) => {
 
   return (
     <CardList>
-      <div>
+      <Link to={href}>
         <Icon src={user.profile_image_url} alt={user.name} />
-      </div>
+      </Link>
       <TextContainer>
         <Link to={href}>
           <p>{user.name}</p>
