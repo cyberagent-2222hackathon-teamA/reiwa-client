@@ -1,22 +1,20 @@
 import React, { useEffect, useState, useCallback, useMemo } from 'react';
-import { useRouteMatch } from 'react-router';
+import { match } from 'react-router';
 import { useCookies } from 'react-cookie';
 import { getTimeLine, getLoginTimeLine } from '../lib/api/timeline';
 import { TopComp } from '../components/pages/Top';
 
-const Top: React.FC = () => {
+interface Props {
+  match: match<{
+    pageNumber: string;
+  }>;
+}
+const Top: React.FC<Props> = ({ match }) => {
   const [cookies] = useCookies(['user']);
   const [timeLine, setTimeLine] = useState<TimeLine | null>(null);
-  const matchPageNumber = useRouteMatch<{ pageNumber: string }>({
-    path: '/page=:pageNumber',
-    strict: true,
-    sensitive: true,
-    exact: true,
-  });
-  const pageNumber = useMemo(() => ({ curr: 1 }), []);
-  if (matchPageNumber) {
-    pageNumber.curr = parseInt(matchPageNumber.params.pageNumber, 10) || 0;
-  }
+  const pageNumber = useMemo(() => {
+    return parseInt(match.params.pageNumber, 10);
+  }, [match.params.pageNumber]);
 
   useEffect(() => {
     if (cookies.user) {
@@ -25,15 +23,15 @@ const Top: React.FC = () => {
     if (!cookies.user) {
       getTimeLineData();
     }
-  }, [pageNumber.curr]);
+  }, [pageNumber]);
 
   const getTimeLineData = useCallback(async () => {
-    const { res } = await getTimeLine(pageNumber.curr);
+    const { res } = await getTimeLine(pageNumber);
     if (res) setTimeLine(res);
   }, [pageNumber]);
 
   const getLoginTimeLineData = useCallback(async () => {
-    const { res } = await getLoginTimeLine(pageNumber.curr, cookies.user);
+    const { res } = await getLoginTimeLine(pageNumber, cookies.user);
     if (res) setTimeLine(res);
   }, [pageNumber]);
 
