@@ -1,6 +1,6 @@
 import React from 'react';
 import loadable, { LoadableComponent } from '@loadable/component';
-import { Loading } from '../../components/template/Loading';
+import { Loading } from '../../components/templates/Loading';
 
 type OneOfPageName = typeof PAGE_NAMES[number];
 const PAGE_NAMES = ['Top', 'User', 'Login', 'Setting'] as const;

@@ -3,8 +3,8 @@ import { Router } from 'react-router';
 import { CookiesProvider } from 'react-cookie';
 import { history } from '../lib/plugins/history';
 import { Routes } from '../lib/routes';
-import { TopNavi } from './template/TopNavi';
-import { MenuNavi } from './template/MenuNavi';
+import { TopNavi } from './templates/TopNavi';
+import { MenuNavi } from './templates/MenuNavi';
 
 export const App: React.FC = () => {
   return (
