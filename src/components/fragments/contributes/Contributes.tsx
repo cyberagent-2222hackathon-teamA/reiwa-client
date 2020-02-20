@@ -8,6 +8,11 @@ interface Props {
   user: User;
 }
 
+interface Values {
+  date: string;
+  postCount: number;
+}
+
 const Contribute = styled.div`
   width: 100px;
 `;
@@ -18,6 +23,21 @@ export const Contributes: React.FC<Props> = ({ user }) => {
   const contributes = user.contributes.map((contribute) => {
     return { date: contribute.date, postCount: contribute.post_count };
   });
+  const getClassFromValue = (value: Values) => {
+    if (value.postCount < 5) {
+      return `color-scale-more-small`;
+    }
+    if (value.postCount < 10) {
+      return `color-scale-small`;
+    }
+    if (value.postCount < 15) {
+      return `color-scale-large`;
+    }
+    if (value.postCount > 15) {
+      return `color-scale-more-large`;
+    }
+    return `color-empty`;
+  };
 
   return (
     <>
@@ -26,10 +46,9 @@ export const Contributes: React.FC<Props> = ({ user }) => {
           startDate={start}
           endDate={end}
           showMonthLabels={true}
+          showWeekdayLabels={true}
           values={contributes}
-          classForValue={(value) => {
-            return `color-scale-${value.postCount}`;
-          }}
+          classForValue={getClassFromValue}
         />
       </Contribute>
     </>
