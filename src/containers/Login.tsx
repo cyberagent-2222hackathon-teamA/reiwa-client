@@ -23,7 +23,7 @@ const Login: React.FC = () => {
   }, [location.search]);
 
   useEffect(() => {
-    if (cookies['user']) {
+    if (cookies.user) {
       // login時にqueryに不正な値を入れた場合rootリダイレクト
       history.push('/');
     }
@@ -31,7 +31,7 @@ const Login: React.FC = () => {
   }, [query]);
 
   useEffect(() => {
-    if (cookies['user']) {
+    if (cookies.user) {
       // cookieにuserがある場合rootへリダイレクト
       history.push('/');
     }
@@ -44,14 +44,14 @@ const Login: React.FC = () => {
     }
     // cookieにuserを入れてrootへリダイレクト
     history.push('/');
-  }, [cookies['user']]);
+  }, [cookies.user]);
 
   const logIn = useCallback(async () => {
     const { res } = await getTwitterURL();
     if (res) {
       window.location.assign(`${res.url}`);
     }
-  }, [cookies['user']]);
+  }, [cookies.user]);
 
   return (
     <div>
