@@ -15,6 +15,9 @@ const Contribute = styled.div`
 export const Contributes: React.FC<Props> = ({ user }) => {
   const start = user.contributes[0].date;
   const end = user.contributes[user.contributes.length - 1].date;
+  const contributes = user.contributes.map((contribute) => {
+    return { date: contribute.date, postCount: contribute.post_count };
+  });
 
   return (
     <>
@@ -22,15 +25,10 @@ export const Contributes: React.FC<Props> = ({ user }) => {
         <CalendarHeatmap
           startDate={start}
           endDate={end}
-          values={user.contributes.map((contribute: UserContributes) => {
-            return (
-              <React.Fragment key={contribute.id}>
-                [{`date: ${contribute.date}, count: ${contribute.post_count}`}]
-              </React.Fragment>
-            );
-          })}
-          classForValue={() => {
-            return `color-scale-${user.contributes[1].post_count}`;
+          showMonthLabels={true}
+          values={contributes}
+          classForValue={(value) => {
+            return `color-scale-${value.postCount}`;
           }}
         />
       </Contribute>
