@@ -38,6 +38,9 @@ const User: React.FC<Props> = ({ match }) => {
     if (res) setActivities(res);
   }, [userId]);
 
+  // eslint-disable-next-line no-console
+  console.log(userId);
+
   return (
     <>
       {/* {error && <UserError error={error} />} */}
