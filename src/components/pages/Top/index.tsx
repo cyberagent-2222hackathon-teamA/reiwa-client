@@ -36,11 +36,11 @@ export const TopComp: React.FC<Props> = ({ timeLine }) => {
 
   return (
     <div>
-      {pager && <Pager pager={pager} />}
       <div ref={lazyLoadArea}>
         {timeLine.contributes.map((contributes: TimeLineContributes) => {
           return <TimeLineCard key={contributes.id} contributes={contributes}></TimeLineCard>;
         })}
+        {pager && <Pager pager={pager} />}
       </div>
     </div>
   );

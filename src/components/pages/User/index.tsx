@@ -18,16 +18,29 @@ const TextContainer = styled.div`
   }
 `;
 
+const UserName = styled.p`
+  font-size: 16px;
+  font-weight: 800;
+`;
+
 const TextArea = styled.div`
   text-align: center;
 `;
+
+// const FollowButton = styled.p`
+//   background-color: black;
+//   color: white;
+//   padding: 10px;
+//   border-radius: 10px;
+//   font-weight: 500;
+// `;
 
 export const UserComp: React.FC<Props> = ({ user, handleContributesData }) => {
   return (
     <div>
       <TextContainer>
         <a href={`https://twitter.com/${user.name}`}>
-          <p>{user.name}</p>
+          <UserName>＠{user.name}</UserName>
           <div>
             <Icon src={user.profile_image_url} alt={user.name} />
           </div>
@@ -39,6 +52,7 @@ export const UserComp: React.FC<Props> = ({ user, handleContributesData }) => {
           </TextArea>
           <TextArea>
             <p>フォロワー</p>
+            {/* <FollowButton>フォローする</FollowButton> */}
             <p>10</p>
           </TextArea>
         </TextContainer>

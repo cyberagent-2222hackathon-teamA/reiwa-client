@@ -9,6 +9,7 @@ interface Props {
     pageNumber: string;
   }>;
 }
+
 const Top: React.FC<Props> = ({ match }) => {
   const [cookies] = useCookies(['user']);
   const [timeLine, setTimeLine] = useState<TimeLine | null>(null);

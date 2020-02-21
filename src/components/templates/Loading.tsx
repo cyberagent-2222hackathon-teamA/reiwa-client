@@ -1,9 +1,15 @@
 import React from 'react';
+import styled from 'styled-components';
+
+const LoadView = styled.div`
+  display: block;
+  height: 100vh;
+`;
 
 export const Loading = () => {
   return (
-    <div>
+    <LoadView>
       <p>Loading...</p>
-    </div>
+    </LoadView>
   );
 };
