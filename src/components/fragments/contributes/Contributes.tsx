@@ -22,20 +22,15 @@ export const Contributes: React.FC<Props> = ({ user, handleContributesData }) =>
   });
 
   const getClassFromValue = (value: Values) => {
-    if (value.postCount === 0) {
-      return `color-empty`;
-    }
+    if (!value.postCount) return `color-empty`;
     if (value.postCount < 5) {
       return `color-scale-more-small`;
-    }
-    if (value.postCount < 10) {
+    } else if (value.postCount <= 10) {
       return `color-scale-small`;
-    }
-    if (value.postCount < 15) {
-      return `color-scale-large`;
-    }
-    if (value.postCount > 15) {
+    } else if (value.postCount <= 15) {
       return `color-scale-more-large`;
+    } else {
+      return `color-scale-large`;
     }
   };
 
