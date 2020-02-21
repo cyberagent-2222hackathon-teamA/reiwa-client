@@ -4,9 +4,14 @@ import { useCookies } from 'react-cookie';
 import styled from 'styled-components';
 
 const MenuNavigations = styled.div`
+  div {
+    display: flex;
+    align-items: center;
+  }
   p {
     color: white;
     font-size: 16px;
+    margin-right: 20px;
   }
   a {
     color: white;
@@ -26,7 +31,7 @@ export const MenuNavi: React.FC = () => {
       {cookies.user && (
         <div>
           <p onClick={logOut}>LogOut</p>
-          <Link to={'/setting'}>setting</Link>
+          <Link to={'/setting'}>Setting</Link>
         </div>
       )}
       {!cookies.user && <Link to={'/login'}>LogIn</Link>}
