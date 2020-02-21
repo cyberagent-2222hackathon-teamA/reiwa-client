@@ -9,8 +9,17 @@ interface Props {
 }
 
 const ActiveItem = styled.div`
-  padding: 10px 20px;
   border-top: 1px solid #eaecef;
+  max-width: 70%;
+  margin: 0 auto;
+`;
+
+const ActiveInner = styled.div`
+  padding: 10px 20px;
+`;
+
+const TextDesc = styled.span`
+  font-weight: 800;
 `;
 
 export const Activities: React.FC<Props> = ({ activities, userId }) => {
@@ -19,17 +28,20 @@ export const Activities: React.FC<Props> = ({ activities, userId }) => {
       {activities.map((activity: Reactions) => {
         return (
           <ActiveItem key={activity.id}>
-            <p>
-              {activity.message.split(' ')[0] !== userId && <span>メッセージ:</span>}
-              <span>{activity.message}</span>
-            </p>
-            {activity.reactions.map((reaction) => {
-              return <Reactions key={reaction.name} reactions={reaction} />;
-            })}
-            {activity.message.split(' ')[0] !== userId && <p>リプライ:</p>}
-            {activity.replies.map((replie) => {
-              return <Replies key={replie.id} replies={replie} />;
-            })}
+            <ActiveInner>
+              <p>
+                {activity.message.split(' ')[0] !== userId && <TextDesc>メッセージ：</TextDesc>}
+                <span>{activity.message}</span>
+              </p>
+              {activity.reactions.map((reaction) => {
+                return <Reactions key={reaction.name} reactions={reaction} />;
+              })}
+              <p>{activity.message.split(' ')[0] !== userId && <TextDesc>リプライ：</TextDesc>}</p>
+              {/* {activity.message.split(' ')[0] === userId && <p>🎉</p>} */}
+              {activity.replies.map((replie) => {
+                return <Replies key={replie.id} replies={replie} />;
+              })}
+            </ActiveInner>
           </ActiveItem>
         );
       })}

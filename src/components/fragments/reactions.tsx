@@ -1,14 +1,19 @@
 import React from 'react';
+import styled from 'styled-components';
 
 interface Props {
   reactions: Stamp;
 }
 
+const StampArea = styled.div`
+  display: flex;
+`;
+
 export const Reactions: React.FC<Props> = ({ reactions }) => {
   return (
-    <p>
-      <span>{reactions.name}</span>
-      <span>{reactions.count}</span>
-    </p>
+    <StampArea>
+      <p>スタンプ名{reactions.name}</p>
+      <p>スタンプ数{reactions.count}</p>
+    </StampArea>
   );
 };
