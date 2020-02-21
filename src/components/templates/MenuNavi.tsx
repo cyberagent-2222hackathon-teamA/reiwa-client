@@ -11,7 +11,7 @@ const MenuNavigations = styled.div`
   p {
     color: white;
     font-size: 16px;
-    margin-right: 20px;
+    margin: 0 20px 0 0;
   }
   a {
     color: white;
@@ -31,6 +31,7 @@ export const MenuNavi: React.FC = () => {
       {cookies.user && (
         <div>
           <p onClick={logOut}>LogOut</p>
+          <p>MyPage</p>
           <Link to={'/setting'}>Setting</Link>
         </div>
       )}
