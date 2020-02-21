@@ -5,6 +5,7 @@ import { Reactions } from '../../../fragments/reactions';
 
 interface Props {
   activities: Reactions[];
+  userId: string;
 }
 
 const ActiveItem = styled.div`
@@ -12,21 +13,20 @@ const ActiveItem = styled.div`
   border-top: 1px solid #eaecef;
 `;
 
-export const Activities: React.FC<Props> = ({ activities }) => {
-  // console.log({ activities });
+export const Activities: React.FC<Props> = ({ activities, userId }) => {
   return (
     <div>
       {activities.map((activity: Reactions) => {
         return (
           <ActiveItem key={activity.id}>
             <p>
-              <span>メッセージ:</span>
+              {activity.message.split(' ')[0] !== userId && <span>メッセージ:</span>}
               <span>{activity.message}</span>
             </p>
             {activity.reactions.map((reaction) => {
               return <Reactions key={reaction.name} reactions={reaction} />;
             })}
-            <p>リプライ:</p>
+            {activity.message.split(' ')[0] !== userId && <p>リプライ:</p>}
             {activity.replies.map((replie) => {
               return <Replies key={replie.id} replies={replie} />;
             })}

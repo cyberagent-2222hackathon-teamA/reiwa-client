@@ -51,7 +51,7 @@ const User: React.FC<Props> = ({ match }) => {
     <>
       {/* {error && <UserError error={error} />} */}
       {user && <UserComp user={user} handleContributesData={handleContributesData} />}
-      {activities && <Activities activities={activities} />}
+      {activities && <Activities activities={activities} userId={userId} />}
       {/* {errorMessage && <p>{errorMessage}</p>} */}
     </>
   );
