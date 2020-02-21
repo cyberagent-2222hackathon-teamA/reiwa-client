@@ -13,19 +13,20 @@ const ActiveItem = styled.div`
 `;
 
 export const Activities: React.FC<Props> = ({ activities }) => {
+  // console.log({ activities });
   return (
     <div>
       {activities.map((activity: Reactions) => {
         return (
           <ActiveItem key={activity.id}>
             <p>
-              <span>質問</span>
+              <span>メッセージ:</span>
               <span>{activity.message}</span>
             </p>
             {activity.reactions.map((reaction) => {
               return <Reactions key={reaction.name} reactions={reaction} />;
             })}
-            <p>回答</p>
+            <p>リプライ:</p>
             {activity.replies.map((replie) => {
               return <Replies key={replie.id} replies={replie} />;
             })}

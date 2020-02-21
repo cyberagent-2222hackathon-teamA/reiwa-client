@@ -20,6 +20,7 @@ export const Contributes: React.FC<Props> = ({ user, handleContributesData }) =>
   const contributes = user.contributes.map((contribute) => {
     return { date: contribute.date, postCount: contribute.post_count };
   });
+  // console.log({ user, start, end });
 
   const getClassFromValue = (value: Values) => {
     if (!value.postCount) return `color-empty`;
