@@ -5,7 +5,7 @@ export const getUser = async (userId: string) => {
   return _fetch<User>(url);
 };
 
-export const getContributes = async (userId: string) => {
-  const url = `${apiBase}/users/${userId}/contributes`;
+export const getContributes = async (userId: string, date?: string) => {
+  const url = date ? `${apiBase}/users/${userId}/contributes?date=${date}` : `${apiBase}/users/${userId}/contributes`;
   return _fetch<Reactions[]>(url);
 };
