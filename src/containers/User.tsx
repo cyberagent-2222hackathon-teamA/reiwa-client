@@ -2,7 +2,7 @@ import React, { useEffect, useState, useCallback, useMemo } from 'react';
 import { match } from 'react-router';
 import { getUser, getContributes } from '../lib/api/user';
 import { UserComp } from '../components/pages/User';
-import { Activities } from '../components/pages/User/Activities';
+import { Activities } from '../components/pages/User/internal/Activities';
 // import { UserError } from '../components/boundaries/user/error';
 
 interface Props {

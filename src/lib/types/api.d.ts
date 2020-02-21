@@ -49,4 +49,5 @@ declare interface Reactions {
   id: number;
   message: string;
   reactions: Stamp[];
+  replies: Reactions[];
 }
