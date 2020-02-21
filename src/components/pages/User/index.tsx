@@ -4,9 +4,10 @@ import { UserContributes } from './internal/UserContributes';
 
 interface Props {
   user: User;
+  handleContributesData: (date: Values) => void;
 }
 
-export const UserComp: React.FC<Props> = ({ user }) => {
+export const UserComp: React.FC<Props> = ({ user, handleContributesData }) => {
   return (
     <>
       <div>
@@ -15,7 +16,7 @@ export const UserComp: React.FC<Props> = ({ user }) => {
           <Icon src={user.profile_image_url} alt={user.name} />
         </a>
       </div>
-      <UserContributes user={user} />
+      <UserContributes user={user} handleContributesData={handleContributesData} />
     </>
   );
 };

@@ -38,10 +38,19 @@ const User: React.FC<Props> = ({ match }) => {
     if (res) setActivities(res);
   }, [userId]);
 
+  const handleContributesData = useCallback(
+    async (value: Values) => {
+      const { res } = await getContributes(userId, value.date);
+      console.log(res);
+      return;
+    },
+    [userId],
+  );
+
   return (
     <>
       {/* {error && <UserError error={error} />} */}
-      {user && <UserComp user={user} />}
+      {user && <UserComp user={user} handleContributesData={handleContributesData} />}
       {activities && <Activities activities={activities} />}
       {/* {errorMessage && <p>{errorMessage}</p>} */}
     </>

@@ -51,3 +51,8 @@ declare interface Reactions {
   reactions: Stamp[];
   replies: Reactions[];
 }
+
+declare interface Values {
+  date: string;
+  postCount: number;
+}
