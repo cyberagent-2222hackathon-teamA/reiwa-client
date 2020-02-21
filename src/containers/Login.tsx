@@ -4,11 +4,18 @@ import { getTwitterURL, getToken } from '../lib/api/auth';
 import { history } from '../lib/plugins/history';
 import styled from 'styled-components';
 
+const Container = styled.div`
+  text-align: center;
+`;
+
+const Title = styled.h2`
+  font-size: 18px;
+  margin: 50px 0 50px;
+`;
+
 const TwitterButton = styled.a`
-  position: relative;
-  height: 20px;
   box-sizing: border-box;
-  padding: 10px;
+  padding: 20px 30px;
   background-color: #1b95e0;
   color: #fff;
   border-radius: 3px;
@@ -54,9 +61,10 @@ const Login: React.FC = () => {
   }, [cookies.user]);
 
   return (
-    <div>
+    <Container>
+      <Title>Twitterでログイン</Title>
       <TwitterButton onClick={logIn}>Twitter</TwitterButton>
-    </div>
+    </Container>
   );
 };
 
