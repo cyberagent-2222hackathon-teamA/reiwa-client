@@ -18,11 +18,14 @@ export const Activities: React.FC<Props> = ({ activities }) => {
       {activities.map((activity: Reactions) => {
         return (
           <ActiveItem key={activity.id}>
-            <p>メッセージ</p>
-            <p>{activity.message}</p>
+            <p>
+              <span>質問</span>
+              <span>{activity.message}</span>
+            </p>
             {activity.reactions.map((reaction) => {
               return <Reactions key={reaction.name} reactions={reaction} />;
             })}
+            <p>回答</p>
             {activity.replies.map((replie) => {
               return <Replies key={replie.id} replies={replie} />;
             })}

@@ -5,10 +5,10 @@ interface Props {
 }
 
 export const Reactions: React.FC<Props> = ({ reactions }) => {
-  console.log(reactions);
   return (
-    <div>
-      <p>bhoge</p>
-    </div>
+    <p>
+      <span>{reactions.name}</span>
+      <span>{reactions.count}</span>
+    </p>
   );
 };

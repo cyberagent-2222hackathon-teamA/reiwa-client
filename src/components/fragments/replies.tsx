@@ -5,10 +5,9 @@ interface Props {
 }
 
 export const Replies: React.FC<Props> = ({ replies }) => {
-  console.log(replies);
   return (
     <div>
-      <p>bhoge</p>
+      <p>{replies.message}</p>
     </div>
   );
 };
