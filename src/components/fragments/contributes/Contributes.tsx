@@ -11,7 +11,8 @@ interface Props {
 }
 
 const Contribute = styled.div`
-  width: 100px;
+  width: 170px;
+  margin: 0 auto;
 `;
 
 export const Contributes: React.FC<Props> = ({ user, handleContributesData }) => {
