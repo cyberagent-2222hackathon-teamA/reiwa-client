@@ -5,11 +5,13 @@ import { history } from '../../lib/plugins/history';
 
 const Container = styled.div`
   width: 100%;
+  height: 60px;
   background-color: #24292e;
   z-index: 1;
 `;
 
 const Inner = styled.div`
+  height: 100%;
   display: flex;
   align-items: center;
   max-width: 80%;

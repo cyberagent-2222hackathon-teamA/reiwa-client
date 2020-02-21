@@ -4,8 +4,13 @@ import { useCookies } from 'react-cookie';
 import styled from 'styled-components';
 
 const MenuNavigations = styled.div`
+  p {
+    color: white;
+    font-size: 16px;
+  }
   a {
     color: white;
+    font-size: 16px;
   }
 `;
 
@@ -18,11 +23,13 @@ export const MenuNavi: React.FC = () => {
 
   return (
     <MenuNavigations>
-      {cookies.user && <p onClick={logOut}>LogOut</p>}
+      {cookies.user && (
+        <div>
+          <p onClick={logOut}>LogOut</p>
+          <Link to={'/setting'}>setting</Link>
+        </div>
+      )}
       {!cookies.user && <Link to={'/login'}>LogIn</Link>}
-      {/* <p>
-        <Link to={'/setting'}>setting</Link>
-      </p> */}
     </MenuNavigations>
   );
 };
