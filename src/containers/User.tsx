@@ -40,9 +40,10 @@ const User: React.FC<Props> = ({ match }) => {
 
   const handleContributesData = useCallback(
     async (value: Values) => {
+      console.log({ value });
+      if (!value.postCount) return setActivities((crr) => crr);
       const { res } = await getContributes(userId, value.date);
-      console.log(res);
-      return;
+      if (res) setActivities(res);
     },
     [userId],
   );
