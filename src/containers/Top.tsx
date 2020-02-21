@@ -13,7 +13,7 @@ const Top: React.FC<Props> = ({ match }) => {
   const [cookies] = useCookies(['user']);
   const [timeLine, setTimeLine] = useState<TimeLine | null>(null);
   const pageNumber = useMemo(() => {
-    return parseInt(match.params.pageNumber, 10);
+    return match.params.pageNumber ? parseInt(match.params.pageNumber, 10) : 1;
   }, [match.params.pageNumber]);
 
   useEffect(() => {
