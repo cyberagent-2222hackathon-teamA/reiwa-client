@@ -2,9 +2,11 @@ import React, { useEffect, useState, useCallback } from 'react';
 import { useCookies } from 'react-cookie';
 import styled from 'styled-components';
 import { getUsers, getSlackUser, putSlack } from '../lib/api/user';
+import { history } from '../lib/plugins/history';
 import { Loading } from '../components/templates/Loading';
 
 const Container = styled.div`
+  margin: 30px;
   display: flex;
   justify-content: space-evenly;
 `;
@@ -43,14 +45,13 @@ const MyPage: React.FC = () => {
   const handleUpdate = useCallback(async () => {
     if (currentUserId) {
       const { res } = await putSlack(cookies.user, currentUserId);
-      // eslint-disable-next-line no-console
-      console.log({ res });
+      if (res?.status) history.push('/');
     }
   }, [currentUserId]);
 
   return (
     <>
-      {user && user.is_setting_completed ? <Loading /> : <Loading />}
+      {user && user.is_setting_completed && slackUsers ? <div /> : <Loading />}
       {slackUsers && (
         <Container>
           <select onChange={onChange}>
