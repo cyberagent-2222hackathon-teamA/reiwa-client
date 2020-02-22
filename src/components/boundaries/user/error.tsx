@@ -1,14 +1,14 @@
 import React from 'react';
 
 interface Props {
-  error: Response;
+  error: Error;
 }
 
-export const UserError: React.FC<Props> = ({ error }) => {
-  console.log(error);
+export const UserError: React.FC<Props> = () => {
+  // console.log(error);
   return (
     <div>
-      <h2>hoge</h2>
+      <h2>Topに戻る</h2>
     </div>
   );
 };
