@@ -2,7 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 
 interface Props {
-  reactions: Stamp;
+  reactions: Stamp[];
 }
 
 const StampContainer = styled.div`
@@ -11,9 +11,15 @@ const StampContainer = styled.div`
 
 export const Reactions: React.FC<Props> = ({ reactions }) => {
   return (
-    <StampContainer>
-      <p>スタンプ名{reactions.name}</p>
-      <p>スタンプ数{reactions.count}</p>
-    </StampContainer>
+    <>
+      {reactions.map((reaction) => {
+        return (
+          <StampContainer key={reaction.name}>
+            <p>スタンプ名{reaction.name}</p>
+            <p>スタンプ数{reaction.count}</p>
+          </StampContainer>
+        );
+      })}
+    </>
   );
 };

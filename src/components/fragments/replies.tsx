@@ -1,13 +1,19 @@
 import React from 'react';
 
 interface Props {
-  replies: Reactions;
+  replies: Reactions[];
 }
 
 export const Replies: React.FC<Props> = ({ replies }) => {
   return (
     <div>
-      <p>{replies.message}</p>
+      {replies.map((replie) => {
+        return (
+          <div key={replie.id}>
+            <p>{replie.message}</p>
+          </div>
+        );
+      })}
     </div>
   );
 };
