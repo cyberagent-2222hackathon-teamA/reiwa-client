@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import { Replies } from '../../../fragments/replies';
+// import { Replies } from '../../../fragments/replies';
 import { Reactions } from '../../../fragments/reactions';
 
 interface Props {
@@ -36,11 +36,16 @@ export const Activities: React.FC<Props> = ({ activities, userId }) => {
               {activity.reactions.map((reaction) => {
                 return <Reactions key={reaction.name} reactions={reaction} />;
               })}
-              <p>{activity.message.split(' ')[0] !== userId && <TextDesc>リプライ：</TextDesc>}</p>
+              <p>
+                {activity.message.split(' ')[0] !== userId && <TextDesc>リプライ：</TextDesc>}
+                <span>{activity.replies.length}</span>
+              </p>
               {/* {activity.message.split(' ')[0] === userId && <p>🎉</p>} */}
-              {activity.replies.map((replie) => {
-                return <Replies key={replie.id} replies={replie} />;
-              })}
+              {/* {console.log(activity.replies.length)} */}
+              {/* {activity.replies.length &&
+                activity.replies.map((replie) => {
+                  return <Replies key={replie.id} replies={replie} />;
+                })} */}
             </ActiveInner>
           </ActiveItem>
         );
