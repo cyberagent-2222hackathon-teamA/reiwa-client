@@ -3,7 +3,6 @@ import styled from 'styled-components';
 
 const LoadView = styled.div`
   display: block;
-  height: 100vh;
 `;
 
 export const Loading = () => {
