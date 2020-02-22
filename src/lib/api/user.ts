@@ -9,3 +9,18 @@ export const getContributes = async (userId: string, date?: string) => {
   const url = date ? `${apiBase}/users/${userId}/contributes?date=${date}` : `${apiBase}/users/${userId}/contributes`;
   return _fetch<Reactions[]>(url);
 };
+
+export const getUsers = async (token: string) => {
+  const url = `${apiBase}/users`;
+  return _fetch<Users>(url, token);
+};
+
+export const getSlackUser = async (token: string) => {
+  const url = `${apiBase}/slack/users`;
+  return _fetch<SlackUsers[]>(url, token);
+};
+
+export const putSlack = async (token: string, id: string) => {
+  const url = `${apiBase}/users/slack_info`;
+  return _fetch<SlackUsers[]>(url, token, id);
+};
