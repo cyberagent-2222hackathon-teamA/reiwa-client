@@ -50,7 +50,7 @@ const Login: React.FC = () => {
       setCookie('user', res.token, { path: '/' });
     }
     // cookieにuserを入れてrootへリダイレクト
-    history.push('/setting');
+    history.push('/mypage');
   }, [cookies.user]);
 
   const logIn = useCallback(async () => {
