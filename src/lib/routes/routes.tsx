@@ -3,7 +3,7 @@ import loadable, { LoadableComponent } from '@loadable/component';
 import { Loading } from '../../components/templates/Loading';
 
 type OneOfPageName = typeof PAGE_NAMES[number];
-const PAGE_NAMES = ['Top', 'User', 'Login', 'Setting'] as const;
+const PAGE_NAMES = ['Top', 'User', 'Login', 'Setting', 'MyPage'] as const;
 
 const create = (name: OneOfPageName) =>
   loadable(() => import(/* webpackChunkName: "[request]" */ `../../containers/${name}`), {

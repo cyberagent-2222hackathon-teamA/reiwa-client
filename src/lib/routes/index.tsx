@@ -9,6 +9,7 @@ export const Routes = () => {
       <Route exact path="/page=:pageNumber" component={pages.Top} />
       <Route exact path="/user/:userId" component={pages.User} />
       <Route exact path="/login" component={pages.Login} />
+      <Route exact path="/mypage" component={pages.MyPage} />
       <Route exact path="/setting" component={pages.Setting} />
     </Switch>
   );
