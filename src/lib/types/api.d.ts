@@ -32,6 +32,19 @@ declare interface User {
   contributes: UserContributes[];
 }
 
+declare interface Users {
+  id: number;
+  name: string;
+  profile_image_url: string;
+  contributes: UserContributes[];
+  is_setting_completed: boolean;
+}
+
+declare interface SlackUsers {
+  id: number;
+  name: string;
+}
+
 declare interface URL {
   url: string;
 }
