@@ -21,6 +21,7 @@ export const getSlackUser = async (token: string) => {
 };
 
 export const putSlack = async (token: string, id: string) => {
-  const url = `${apiBase}/users/slack_info`;
-  return _fetch<SlackUsers[]>(url, token, id);
+  const url = `${apiBase}/users/slack_info?slack_user_id=${id}`;
+  const put = true;
+  return _fetch<SlackUsers[]>(url, token, put);
 };
