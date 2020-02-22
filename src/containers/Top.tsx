@@ -1,7 +1,7 @@
 import React, { useEffect, useState, useCallback, useMemo } from 'react';
 import { match } from 'react-router';
 import { useCookies } from 'react-cookie';
-import { getTimeLine, getLoginTimeLine } from '../lib/api/timeline';
+import { getTimeLine } from '../lib/api/timeline';
 import { TopComp } from '../components/pages/Top';
 
 interface Props {
@@ -19,7 +19,8 @@ const Top: React.FC<Props> = ({ match }) => {
 
   useEffect(() => {
     if (cookies.user) {
-      getLoginTimeLineData();
+      // getLoginTimeLineData();
+      getTimeLineData();
     }
     if (!cookies.user) {
       getTimeLineData();
@@ -31,10 +32,10 @@ const Top: React.FC<Props> = ({ match }) => {
     if (res) setTimeLine(res);
   }, [pageNumber]);
 
-  const getLoginTimeLineData = useCallback(async () => {
-    const { res } = await getLoginTimeLine(pageNumber, cookies.user);
-    if (res) setTimeLine(res);
-  }, [pageNumber]);
+  // const getLoginTimeLineData = useCallback(async () => {
+  //   const { res } = await getLoginTimeLine(pageNumber, cookies.user);
+  //   if (res) setTimeLine(res);
+  // }, [pageNumber]);
 
   return (
     <>

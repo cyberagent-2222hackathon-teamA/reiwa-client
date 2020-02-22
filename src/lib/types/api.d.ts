@@ -45,6 +45,10 @@ declare interface SlackUsers {
   name: string;
 }
 
+declare interface SlackStatus {
+  status: string;
+}
+
 declare interface URL {
   url: string;
 }
