@@ -33,7 +33,7 @@ export const MenuNavi: React.FC = () => {
         <div>
           <p onClick={logOut}>LogOut</p>
           <Link to={'/mypage'}>MyPage</Link>
-          <Link to={'/setting'}>Setting</Link>
+          {/* <Link to={'/setting'}>Setting</Link> */}
         </div>
       )}
       {!cookies.user && <Link to={'/login'}>LogIn</Link>}
