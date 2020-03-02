@@ -1,4 +1,4 @@
-import React, { useCallback, useMemo, useEffect } from 'react';
+import React, { useMemo, useEffect } from 'react';
 import { useCookies } from 'react-cookie';
 import { getTwitterURL, getToken } from '../lib/api/auth';
 import { history } from '../lib/plugins/history';
@@ -24,41 +24,33 @@ const TwitterButton = styled.a`
 `;
 
 const Login: React.FC = () => {
-  const [cookies, setCookie] = useCookies(['user']);
-  const query = useMemo(() => {
-    return location.search;
-  }, [location.search]);
+  const [{ user }, setCookie] = useCookies(['user']);
+  const searchText = useMemo(() => location.search, [location.search]);
 
   useEffect(() => {
-    if (cookies.user) {
+    if (user) {
       // login時にqueryに不正な値を入れた場合rootリダイレクト
-      history.push('/');
-    }
-    if (query) setToken();
-  }, [query]);
-
-  useEffect(() => {
-    if (cookies.user) {
       // cookieにuserがある場合rootへリダイレクト
       history.push('/');
     }
-  }, []);
+    if (!searchText) return;
 
-  const setToken = useCallback(async () => {
-    const { res } = await getToken(query);
-    if (res) {
-      setCookie('user', res.token, { path: '/' });
-    }
-    // cookieにuserを入れてrootへリダイレクト
-    history.push('/mypage');
-  }, [cookies.user]);
+    (async () => {
+      const { res } = await getToken(searchText);
+      if (res) {
+        setCookie('user', res.token, { path: '/' });
+      }
+      // cookieにuserを入れてrootへリダイレクト
+      history.push('/mypage');
+    })();
+  }, [searchText]);
 
-  const logIn = useCallback(async () => {
+  const logIn = async () => {
     const { res } = await getTwitterURL();
     if (res) {
       window.location.assign(`${res.url}`);
     }
-  }, [cookies.user]);
+  };
 
   return (
     <Container>

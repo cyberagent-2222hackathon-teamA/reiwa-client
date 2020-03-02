@@ -12,7 +12,7 @@ export const getContributes = async (userId: string, date?: string) => {
 
 export const getUsers = async (token: string) => {
   const url = `${apiBase}/users`;
-  return _fetch<Users>(url, token);
+  return _fetch<UserSelf>(url, token);
 };
 
 export const getSlackUser = async (token: string) => {

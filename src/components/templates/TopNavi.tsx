@@ -1,4 +1,4 @@
-import React, { useCallback } from 'react';
+import React from 'react';
 import styled from 'styled-components';
 import { MenuNavi } from './MenuNavi';
 import { history } from '../../lib/plugins/history';
@@ -24,18 +24,11 @@ const Inner = styled.div`
   }
 `;
 
-export const TopNavi: React.FC = () => {
-  const handleClickTitle = useCallback(() => {
-    history.push('/');
-  }, []);
-  return (
-    <Container>
-      <Inner>
-        <h1 onClick={handleClickTitle}>0+</h1>
-        <MenuNavi />
-      </Inner>
-    </Container>
-  );
-};
-
-React.memo(TopNavi);
+export const TopNavi: React.FC = () => (
+  <Container>
+    <Inner>
+      <h1 onClick={() => history.push('/')}>0+</h1>
+      <MenuNavi />
+    </Inner>
+  </Container>
+);

@@ -40,5 +40,3 @@ export const MenuNavi: React.FC = () => {
     </MenuNavigations>
   );
 };
-
-React.memo(MenuNavi);

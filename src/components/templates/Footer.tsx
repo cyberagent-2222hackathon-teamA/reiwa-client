@@ -12,14 +12,10 @@ const FooterContainer = styled.footer`
   }
 `;
 
-export const Footer: React.FC = () => {
-  return (
-    <FooterContainer>
-      <p>
-        <small>&copy; 2020 0+ Fumiaki Nakao & Wataru Katsuki All Rights Reserved</small>
-      </p>
-    </FooterContainer>
-  );
-};
-
-React.memo(Footer);
+export const Footer: React.FC = () => (
+  <FooterContainer>
+    <p>
+      <small>&copy; 2020 0+ Fumiaki Nakao & Wataru Katsuki All Rights Reserved</small>
+    </p>
+  </FooterContainer>
+);

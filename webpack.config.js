@@ -7,7 +7,6 @@ const src = path.resolve(__dirname, 'src');
 const dist = path.resolve(__dirname, 'dist');
 
 const MODE = process.env.NODE_ENV || 'development';
-const DEV = process.env.NODE_ENV !== 'production';
 
 const copyRules = [
   {
@@ -38,8 +37,8 @@ module.exports = {
     extensions: ['.ts', '.tsx', '.js', '.json'],
   },
   optimization: {
-    minimize: !DEV,
-    minimizer: DEV ? [] : [new TerserPlugin()],
+    minimize: MODE === 'production',
+    minimizer: MODE === 'production' ? [] : [new TerserPlugin()],
     splitChunks: {
       chunks: 'all',
     },
@@ -48,7 +47,7 @@ module.exports = {
     rules: [
       {
         test: /\.tsx?$/,
-        use: [{ loader: 'ts-loader' }],
+        use: ['ts-loader'],
       },
       {
         test: /\.(jpe?g|png|gif|svg)$/i,
