@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useCallback, useMemo } from 'react';
+import React, { useEffect, useState, useCallback } from 'react';
 import { match } from 'react-router';
 import { getUser, getContributes } from '../lib/api/user';
 import { UserComp } from '../components/pages/User';
@@ -16,26 +16,19 @@ const User: React.FC<Props> = ({ match }) => {
   const [activities, setActivities] = useState<Reactions[] | null>(null);
   // const [errorMessage, setErrorMessage] = useState<string | null>(null);
 
-  const userId = useMemo(() => {
-    return match.params.userId;
-  }, [match.params.userId]);
+  const { userId } = match.params;
 
   useEffect(() => {
-    getUserData();
-    getContributesData();
-  }, [userId]);
-
-  const getUserData = useCallback(async () => {
-    const { res } = await getUser(userId);
-    if (res) setUser(res);
-    // if (error) setErrorMessage(error.message);
-    // eslint-disable-next-line no-console
-    // console.log({ reactions, errorMessage });
-  }, [userId]);
-
-  const getContributesData = useCallback(async () => {
-    const { res } = await getContributes(userId);
-    if (res) setActivities(res);
+    (async () => {
+      {
+        const { res } = await getUser(userId);
+        if (res) setUser(res);
+      }
+      {
+        const { res } = await getContributes(userId);
+        if (res) setActivities(res);
+      }
+    })();
   }, [userId]);
 
   const handleContributesData = useCallback(

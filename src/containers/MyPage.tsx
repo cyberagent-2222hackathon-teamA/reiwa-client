@@ -13,30 +13,27 @@ const Container = styled.div`
 
 const MyPage: React.FC = () => {
   const [cookies] = useCookies(['user']);
-  const [user, setUser] = useState<Users | null>(null);
+  const [user, setUser] = useState<UserSelf | null>(null);
   const [currentUserId, setCurrentUserId] = useState<string | null>(null);
   const [slackUsers, setSlackUser] = useState<SlackUsers[] | null>(null);
 
   useEffect(() => {
     if (cookies.user) {
-      getUsersData();
-      getSlackData();
+      (async () => {
+        const { res } = await getUsers(cookies.user);
+        if (res) {
+          setUser(res);
+        }
+      })();
+
+      (async () => {
+        const { res } = await getSlackUser(cookies.user);
+        if (res) {
+          setSlackUser(res);
+        }
+      })();
     }
   }, [cookies.user]);
-
-  const getUsersData = useCallback(async () => {
-    const { res } = await getUsers(cookies.user);
-    if (res) {
-      setUser(res);
-    }
-  }, [user]);
-
-  const getSlackData = useCallback(async () => {
-    const { res } = await getSlackUser(cookies.user);
-    if (res) {
-      setSlackUser(res);
-    }
-  }, [user]);
 
   const onChange = useCallback((event: React.ChangeEvent<HTMLSelectElement>) => {
     setCurrentUserId(event.target.value);
@@ -55,13 +52,11 @@ const MyPage: React.FC = () => {
       {slackUsers && (
         <Container>
           <select onChange={onChange}>
-            {slackUsers.map((slackUser) => {
-              return (
-                <option key={slackUser.id} value={slackUser.id}>
-                  {slackUser.name}
-                </option>
-              );
-            })}
+            {slackUsers.map(({ id, name }) => (
+              <option key={id} value={id}>
+                {name}
+              </option>
+            ))}
           </select>
           <button onClick={handleUpdate}>button</button>
         </Container>

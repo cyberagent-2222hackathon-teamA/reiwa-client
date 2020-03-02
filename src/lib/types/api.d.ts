@@ -32,11 +32,7 @@ declare interface User {
   contributes: UserContributes[];
 }
 
-declare interface Users {
-  id: number;
-  name: string;
-  profile_image_url: string;
-  contributes: UserContributes[];
+declare interface UserSelf extends User {
   is_setting_completed: boolean;
 }
 
